@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
 import { AndroidPermissions } from '@ionic-native/android-permissions';
+import { SmsServiceProvider } from '../providers/sms-service/sms-service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AndroidPermissions } from '@ionic-native/android-permissions';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AndroidPermissions
+    AndroidPermissions,
+    SmsServiceProvider
   ]
 })
 export class AppModule {}

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 
-declare var SMS: any;
+import { SmsServiceProvider } from '../../providers/sms-service/sms-service';
 
 @Component({
   selector: 'page-home',
@@ -9,34 +9,36 @@ declare var SMS: any;
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
-    this.readListSMS();
-    this.expectingSMS();
+  text = {
+    "number": "", 
+    "message": "",
+  };
+
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public smsService: SmsServiceProvider) {
+	let isApp = (!document.URL.startsWith('http') || document.URL.startsWith('http://localhost:8080'));
+	if (isApp) {
+		this.smsService.readListSMS();
+		this.smsService.expectingSMS();
+	}
+	else {
+		console.log("Web Browser.");
+		this.showAlert();
+	}
+  }
+  
+  showAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Error!',
+      subTitle: 'To test the APP use a mobile device.',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+  
+  sendTextMessage() {
+	this.smsService.sendTextMessage(this.text.number, this.text.message);
   }
 
-  readListSMS(){    
-    let filter = { 
-      box : 'inbox' , // 'inbox' (default), 'sent', 'draft' 
-      indexFrom : 0 , // Start from index 0.
-      maxCount : 10 , // Count of SMS to return each time.
-    }; 
-    if (SMS)SMS.listSMS(filter,(listSMS) => { 
-      console.log("SMS" , listSMS); 
-    },Error => { 
-      console.log('Error list sms:' + Error); 
-    }); 
-  } 
-    
-  expectingSMS(){          
-    if (SMS)SMS.startWatch(() => { 
-      console.log('Esperando...'); 
-    },Error => { 
-      console.log('Fallo el inicio de la espera.'); 
-    });      
-    document.addEventListener('onSMSArrive', (e: any ) => { 
-      var sms = e.data; 
-      console.log({mensaje_entrante:sms});       
-    }); 
-  }
+  
 
 }

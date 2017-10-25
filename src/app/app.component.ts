@@ -20,7 +20,8 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-      this.requestSMSPermissions();
+	  let isApp = (!document.URL.startsWith('http') || document.URL.startsWith('http://localhost:8080'));
+	  if (isApp) this.requestSMSPermissions();
     });
   }
 
