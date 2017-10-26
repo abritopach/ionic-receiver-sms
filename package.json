@@ -26,6 +26,7 @@
     "@ionic-native/splash-screen": "4.3.2",
     "@ionic-native/status-bar": "4.3.2",
     "@ionic/storage": "2.0.1",
+    "angular2-text-mask": "8.0.2",
     "cordova-plugin-android-permissions": "^1.0.0",
     "cordova-plugin-sms": "^1.0.5",
     "cordova-sms-plugin": "^0.1.11",

@@ -10,7 +10,7 @@
   <ion-card>
     <ion-item>
       <ion-label stacked>Phone Number</ion-label>
-      <ion-input [(ngModel)]="text.number" type="tel"></ion-input>
+      <ion-input [(ngModel)]="text.number" type="tel" [textMask]="{mask: masks.phoneNumber}"></ion-input>
     </ion-item>
 
     <ion-item>

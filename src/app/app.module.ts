@@ -10,6 +10,8 @@ import { HomePage } from '../pages/home/home';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { SmsServiceProvider } from '../providers/sms-service/sms-service';
 
+import { TextMaskModule } from 'angular2-text-mask';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -17,7 +19,8 @@ import { SmsServiceProvider } from '../providers/sms-service/sms-service';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    TextMaskModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

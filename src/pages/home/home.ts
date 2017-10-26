@@ -9,21 +9,30 @@ import { SmsServiceProvider } from '../../providers/sms-service/sms-service';
 })
 export class HomePage {
 
+  masks: any;
+
   text = {
     "number": "", 
     "message": "",
   };
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public smsService: SmsServiceProvider) {
-	let isApp = (!document.URL.startsWith('http') || document.URL.startsWith('http://localhost:8080'));
-	if (isApp) {
-		this.smsService.readListSMS();
-		this.smsService.expectingSMS();
-	}
-	else {
-		console.log("Web Browser.");
-		this.showAlert();
-	}
+  
+    this.masks = {
+      phoneNumber: ['(', '+', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/],
+      cardNumber: [/\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/],
+      cardExpiry: [/[0-1]/, /\d/, '/', /[1-2]/, /\d/],
+      orderCode: [/[a-zA-z]/, ':', /\d/, /\d/, /\d/, /\d/]
+    };
+	  let isApp = (!document.URL.startsWith('http') || document.URL.startsWith('http://localhost:8080'));
+	  if (isApp) {
+		  this.smsService.readListSMS();
+		  this.smsService.expectingSMS();
+	  }
+	  else {
+		  console.log("Web Browser.");
+		  this.showAlert();
+	  }
   }
   
   showAlert() {
@@ -36,7 +45,7 @@ export class HomePage {
   }
   
   sendTextMessage() {
-	this.smsService.sendTextMessage(this.text.number, this.text.message);
+	  this.smsService.sendTextMessage(this.text.number, this.text.message);
   }
 
   
