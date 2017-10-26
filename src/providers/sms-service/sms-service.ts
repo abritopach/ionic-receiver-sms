@@ -13,7 +13,7 @@ import { SMS } from '@ionic-native/sms';
 @Injectable()
 export class SmsServiceProvider {
 
-  constructor(public toastCtrl: ToastController) {
+  constructor(public toastCtrl: ToastController, public sms: SMS) {
     console.log('Hello SmsServiceProvider Provider');
   }
   
@@ -50,7 +50,7 @@ export class SmsServiceProvider {
   sendTextMessage(number, message) {
     console.log("Number: " + number);
     console.log("Message: " + message);
-    SMS.send(number, message).then((result) => {
+    this.sms.send(number, message).then((result) => {
       let successToast = this.toastCtrl.create({
         message: "Text message sent successfully! :)",
         duration: 3000
