@@ -16,6 +16,18 @@ export class SmsServiceProvider {
   constructor(public toastCtrl: ToastController, public sms: SMS) {
     console.log('Hello SmsServiceProvider Provider');
   }
+
+  // http://www.programmingworldtech.com/2017/09/ionic-3-cordova-read-sms-plugin.html
+
+  sendSMS(number, message) {
+    /*
+    SMS.sendSMS(number, message) => { 
+      console.log("SMS sent."); 
+    },Error => { 
+      console.log('Error sending SMS.'); 
+    }); 
+    */
+  }
   
   readListSMS(){   
 

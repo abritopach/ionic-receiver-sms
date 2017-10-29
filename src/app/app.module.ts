@@ -12,6 +12,8 @@ import { SmsServiceProvider } from '../providers/sms-service/sms-service';
 
 import { TextMaskModule } from 'angular2-text-mask';
 
+import { SMS } from '@ionic-native/sms';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -32,7 +34,8 @@ import { TextMaskModule } from 'angular2-text-mask';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AndroidPermissions,
-    SmsServiceProvider
+    SmsServiceProvider,
+    SMS
   ]
 })
 export class AppModule {}
