@@ -28,7 +28,6 @@ export class HomePage {
     };
 	  let isApp = (!document.URL.startsWith('http') || document.URL.startsWith('http://localhost:8080'));
 	  if (isApp) {
-		  this.smsService.readListSMS();
 		  this.smsService.waitingForSMS();
 	  }
 	  else {

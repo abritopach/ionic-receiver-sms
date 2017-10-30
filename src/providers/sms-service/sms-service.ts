@@ -34,11 +34,15 @@ export class SmsServiceProvider {
       indexFrom : 0 , // Start from index 0.
       maxCount : 10 , // Count of SMS to return each time.
     }; 
-    if (SMS)SMS.listSMS(filter,(listSMS) => { 
-      console.log("SMS" , listSMS); 
-    },Error => { 
-      console.log('Error list sms:' + Error); 
-    }); 
+    return new Promise((resolve, reject) => {
+      if (SMS)SMS.listSMS(filter,(listSMS) => { 
+        console.log("SMS" , listSMS); 
+        resolve(listSMS);;
+      },Error => { 
+        console.log('Error list sms:' + Error); 
+        reject(Error);
+      }); 
+    });
   } 
     
   waitingForSMS() {

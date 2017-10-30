@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+
+import { SmsServiceProvider } from '../../providers/sms-service/sms-service';
 
 /**
  * Generated class for the SmsListPage page.
@@ -15,11 +17,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SmsListPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  messages: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public smsService: SmsServiceProvider,
+    public loadingCtrl: LoadingController) {
+      this.messages = [];
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SmsListPage');
+
+    let loading = this.loadingCtrl.create({
+      content: "Loading SMS..."
+    });
+
+    this.smsService.readListSMS()
+    .then(listSMS => {
+      console.log(listSMS);
+      this.messages = listSMS;
+      loading.dismiss();
+    })
   }
 
 }
