@@ -11,8 +11,9 @@ import { SmsListPage } from '../sms-list/sms-list';
 })
 export class HomePage {
 
+  isApp: boolean;
   masks: any;
-
+  
   text = {
     "number": "", 
     "message": "",
@@ -26,8 +27,8 @@ export class HomePage {
       cardExpiry: [/[0-1]/, /\d/, '/', /[1-2]/, /\d/],
       orderCode: [/[a-zA-z]/, ':', /\d/, /\d/, /\d/, /\d/]
     };
-	  let isApp = (!document.URL.startsWith('http') || document.URL.startsWith('http://localhost:8080'));
-	  if (isApp) {
+	  this.isApp = (!document.URL.startsWith('http') || document.URL.startsWith('http://localhost:8080'));
+	  if (this.isApp) {
 		  this.smsService.waitingForSMS();
 	  }
 	  else {
