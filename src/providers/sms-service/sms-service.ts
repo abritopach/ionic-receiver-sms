@@ -20,11 +20,19 @@ export class SmsServiceProvider {
   // http://www.programmingworldtech.com/2017/09/ionic-3-cordova-read-sms-plugin.html
 
   sendSMS(number, message) {
+    /*
     SMS.sendSMS(number, message => { 
       console.log("SMS sent."); 
     },Error => { 
       console.log('Error sending SMS.'); 
     });
+    */
+
+    SMS.sendSMS(number, message,function(){
+      console.log("SMS sent."); 
+     }, function(e){
+      console.log('Error sending SMS.'); 
+     });
   }
   
   readListSMS() {  
