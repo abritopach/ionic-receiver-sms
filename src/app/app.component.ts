@@ -27,7 +27,7 @@ export class MyApp {
 
   requestSMSPermissions(){
     this .androidPermissions.checkPermission(this.androidPermissions.PERMISSION.READ_SMS)
-    .then( success => console.log ( 'Permiso concevido.' ), 
+    .then( success => console.log ( 'Permiso concebido.' ), 
     err => this.androidPermissions.requestPermission( this.androidPermissions.PERMISSION.READ_SMS) 
     ); 
 

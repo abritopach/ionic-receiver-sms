@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { SmsListPage } from '../pages/sms-list/sms-list';
 
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { SmsServiceProvider } from '../providers/sms-service/sms-service';
@@ -17,7 +18,8 @@ import { SMS } from '@ionic-native/sms';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    SmsListPage
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,8 @@ import { SMS } from '@ionic-native/sms';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    SmsListPage
   ],
   providers: [
     StatusBar,

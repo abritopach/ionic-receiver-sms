@@ -1,8 +1,8 @@
 import { ToastController } from 'ionic-angular';
 import { Injectable } from '@angular/core';
-import { SMS } from '@ionic-native/sms';
+//import { SMS } from '@ionic-native/sms';
 
-//declare var SMS: any;
+declare var SMS: any;
 
 /*
   Generated class for the SmsServiceProvider provider.
@@ -13,25 +13,22 @@ import { SMS } from '@ionic-native/sms';
 @Injectable()
 export class SmsServiceProvider {
 
-  constructor(public toastCtrl: ToastController, public sms: SMS) {
+  constructor(public toastCtrl: ToastController/*, public sms: SMS*/) {
     console.log('Hello SmsServiceProvider Provider');
   }
 
   // http://www.programmingworldtech.com/2017/09/ionic-3-cordova-read-sms-plugin.html
 
   sendSMS(number, message) {
-    /*
-    SMS.sendSMS(number, message) => { 
+    SMS.sendSMS(number, message => { 
       console.log("SMS sent."); 
     },Error => { 
       console.log('Error sending SMS.'); 
-    }); 
-    */
+    });
   }
   
-  readListSMS(){   
-
-	/*
+  readListSMS() {  
+    console.log("readListSMS."); 
     let filter = { 
       box : 'inbox' , // 'inbox' (default), 'sent', 'draft' 
       indexFrom : 0 , // Start from index 0.
@@ -42,23 +39,22 @@ export class SmsServiceProvider {
     },Error => { 
       console.log('Error list sms:' + Error); 
     }); 
-	*/
   } 
     
-  expectingSMS(){
-	/*  
+  waitingForSMS() {
+    console.log("waitingForSMS");
     if (SMS)SMS.startWatch(() => { 
-      console.log('Esperando...'); 
+      console.log('Waiting for SMS...'); 
     },Error => { 
-      console.log('Fallo el inicio de la espera.'); 
+      console.log('Error waiting for SMS.'); 
     });      
     document.addEventListener('onSMSArrive', (e: any ) => { 
       var sms = e.data; 
       console.log({mensaje_entrante:sms});       
     }); 
-	*/
   }
   
+  /*
   sendTextMessage(number, message) {
     console.log("Number: " + number);
     console.log("Message: " + message);
@@ -76,5 +72,6 @@ export class SmsServiceProvider {
       errorToast.present();
     });
  }
+ */
 
 }

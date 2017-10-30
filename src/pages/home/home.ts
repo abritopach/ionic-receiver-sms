@@ -3,6 +3,8 @@ import { NavController, AlertController } from 'ionic-angular';
 
 import { SmsServiceProvider } from '../../providers/sms-service/sms-service';
 
+import { SmsListPage } from '../sms-list/sms-list';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -27,7 +29,7 @@ export class HomePage {
 	  let isApp = (!document.URL.startsWith('http') || document.URL.startsWith('http://localhost:8080'));
 	  if (isApp) {
 		  this.smsService.readListSMS();
-		  this.smsService.expectingSMS();
+		  this.smsService.waitingForSMS();
 	  }
 	  else {
 		  console.log("Web Browser.");
@@ -45,7 +47,15 @@ export class HomePage {
   }
   
   sendTextMessage() {
-	  this.smsService.sendTextMessage(this.text.number, this.text.message);
+    // Using nativa ionic SMS.
+    //this.smsService.sendTextMessage(this.text.number, this.text.message);
+    // Using cordova-sms-plugin.
+    this.smsService.sendSMS(this.text.number, this.text.message);
+  }
+
+  onClickSMSList() {
+    console.log("onClickSMSList");
+    this.navCtrl.push(SmsListPage);
   }
 
   
