@@ -15,7 +15,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SmsDetailsPage {
 
+  messages: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.messages = this.navParams.get('message');
+    console.log('constructor SmsDetailsPage');
+    console.log(this.messages);
   }
 
   ionViewDidLoad() {

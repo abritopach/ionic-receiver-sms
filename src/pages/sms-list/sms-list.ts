@@ -20,9 +20,11 @@ import { SmsDetailsPage } from '../sms-details/sms-details';
 export class SmsListPage {
 
   messages: any;
+  results: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public smsService: SmsServiceProvider,
     public loadingCtrl: LoadingController) {
+      this.results = [];
       this.messages = [];
   }
 
@@ -36,14 +38,39 @@ export class SmsListPage {
     this.smsService.readListSMS()
     .then(listSMS => {
       console.log(listSMS);
-      this.messages = listSMS;
+      this.results = listSMS;
+      this.groupMessabesByAddress();
+
       loading.dismiss();
     })
   }
 
   selectedMessage(message) {
     console.log(message);
-    this.navCtrl.push(SmsDetailsPage);
+    this.navCtrl.push(SmsDetailsPage, {
+      message: message
+    });
+  }
+
+  groupMessabesByAddress() {
+    let messages = this.results;
+    let res = messages.reduce(function(res, currentValue) {
+      if (res.indexOf(currentValue.address) === -1 ) {
+        res.push(currentValue.address);
+      }
+      console.log(res);
+      return res;
+    }, []).map(function(address) {
+      return {
+        address: address,
+        info: messages.filter(function(_el) {
+          return _el.address === address;
+        }).map(function(_el) { return _el; })
+      }  
+    });
+    
+    console.log(res);
+    this.messages = res;
   }
 
 }

@@ -45,7 +45,7 @@ export class SmsServiceProvider {
     return new Promise((resolve, reject) => {
       if (SMS)SMS.listSMS(filter,(listSMS) => { 
         console.log("SMS" , listSMS); 
-        resolve(listSMS);;
+        resolve(listSMS);
       },Error => { 
         console.log('Error list sms:' + Error); 
         reject(Error);
