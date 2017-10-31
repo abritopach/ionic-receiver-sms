@@ -40,7 +40,7 @@ export class SmsServiceProvider {
     let filter = { 
       box : 'inbox' , // 'inbox' (default), 'sent', 'draft' 
       indexFrom : 0 , // Start from index 0.
-      maxCount : 10 , // Count of SMS to return each time.
+      maxCount : 20 , // Count of SMS to return each time.
     }; 
     return new Promise((resolve, reject) => {
       if (SMS)SMS.listSMS(filter,(listSMS) => { 

@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 
 import { SmsServiceProvider } from '../../providers/sms-service/sms-service';
 
+import { SmsDetailsPage } from '../sms-details/sms-details';
+
 /**
  * Generated class for the SmsListPage page.
  *
@@ -37,6 +39,11 @@ export class SmsListPage {
       this.messages = listSMS;
       loading.dismiss();
     })
+  }
+
+  selectedMessage(message) {
+    console.log(message);
+    this.navCtrl.push(SmsDetailsPage);
   }
 
 }
