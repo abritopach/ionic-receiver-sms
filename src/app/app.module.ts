@@ -16,12 +16,15 @@ import { TextMaskModule } from 'angular2-text-mask';
 
 import { SMS } from '@ionic-native/sms';
 
+import { FormatDatePipe } from '../pipes/format-date/format-date';
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     SmsListPage,
-    SmsDetailsPage
+    SmsDetailsPage,
+    FormatDatePipe
   ],
   imports: [
     BrowserModule,

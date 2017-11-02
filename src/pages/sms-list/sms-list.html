@@ -17,10 +17,11 @@
   <ion-list>
     <ion-item *ngFor="let message of messages" (click)="selectedMessage(message)">
       <ion-avatar item-start>
-        <img src="https://www.iconsfind.com/wp-content/uploads/2017/02/20170214_58a28e23853ae-210x210.png">
+        <img src="assets/imgs/user-icon.png">
       </ion-avatar>
       <h2>{{message.address}}</h2>
       <p>{{message.info[0].body}}</p>
+      <ion-note item-end>{{message.info[0].date | formatDate }}</ion-note>
     </ion-item>
   </ion-list>
 </ion-content>
