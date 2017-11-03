@@ -54,8 +54,18 @@ export class HomePage {
   }
 
   onClickSMSList() {
-    console.log("onClickSMSList");
+    //console.log("onClickSMSList");
     this.navCtrl.push(SmsListPage);
+  }
+
+  onChangePhone() {
+    console.log(this.text.number);
+  }
+
+  onClickMessage() {
+    //console.log("onClickMessage");
+    this.text.number = this.text.number.replace("_", "");
+    //console.log(this.text.number);
   }
 
   

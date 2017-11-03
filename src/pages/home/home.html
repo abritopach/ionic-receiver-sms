@@ -13,12 +13,12 @@
   <ion-card>
     <ion-item>
       <ion-label stacked>Phone Number</ion-label>
-      <ion-input [(ngModel)]="text.number" type="tel" [textMask]="{mask: masks.phoneNumber}"></ion-input>
+      <ion-input [(ngModel)]="text.number" type="tel" [textMask]="{mask: masks.phoneNumber}" (ionChange)='onChangePhone()'></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Message</ion-label>
-      <ion-textarea [(ngModel)]="text.message"></ion-textarea>
+      <ion-textarea [(ngModel)]="text.message" (click)="onClickMessage()"></ion-textarea>
     </ion-item>
 
     <ion-item>
