@@ -29,7 +29,7 @@ export class SmsListPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SmsListPage');
+    //console.log('ionViewDidLoad SmsListPage');
 
     let loading = this.loadingCtrl.create({
       content: "Loading SMS..."
@@ -37,7 +37,7 @@ export class SmsListPage {
 
     this.smsService.readListSMS()
     .then(listSMS => {
-      console.log(listSMS);
+      //console.log(listSMS);
       this.results = listSMS;
       this.groupMessabesByAddress();
 
@@ -46,7 +46,7 @@ export class SmsListPage {
   }
 
   selectedMessage(message) {
-    console.log(message);
+    //console.log(message);
     this.navCtrl.push(SmsDetailsPage, {
       message: message
     });
@@ -58,7 +58,7 @@ export class SmsListPage {
       if (res.indexOf(currentValue.address) === -1 ) {
         res.push(currentValue.address);
       }
-      console.log(res);
+      //console.log(res);
       return res;
     }, []).map(function(address) {
       return {
@@ -69,7 +69,7 @@ export class SmsListPage {
       }  
     });
     
-    console.log(res);
+    //console.log(res);
     this.messages = res;
   }
 

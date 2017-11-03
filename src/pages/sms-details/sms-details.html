@@ -14,18 +14,22 @@
 
 
 <ion-content padding>
-  <ion-card *ngFor="let message of messages.info">
-    
-      <ion-item>
-        <ion-avatar item-start>
-          <img src="assets/imgs/user-icon.png">
-        </ion-avatar>
-        <h2>{{message.date | date: 'dd/MM/yyyy H:mm'}}</h2>
-      </ion-item>
-    
-      <ion-card-content>
-        <p>{{message.body}}</p>
-      </ion-card-content>
-    
-    </ion-card>
+  <div *ngFor="let message of messages">
+      <ion-item-divider>
+          {{message.date}}
+      </ion-item-divider>
+      <ion-card *ngFor="let item of message.info">
+          <ion-item>
+            <ion-avatar item-start>
+              <img src="assets/imgs/user-icon.png">
+            </ion-avatar>
+            <h2>Mensaje</h2>
+          </ion-item>
+        
+          <ion-card-content>
+            <p>{{item.body}}</p>
+            <p>{{item.date | date: 'H:mm'}}</p>
+          </ion-card-content>
+      </ion-card>
+    </div>
 </ion-content>
