@@ -1,26 +1,58 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+# Ionic-Receiver-Sms
 
-## How to use this template
+Sample project that attempts to simulate the behavior of the mobile device's message application.
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+This sample project shows you how to:
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
+    * Send SMS using @ionic-native/sms and cordova-sms-plugin (Uncomment code in sms-service provider).
+    * Using cordova-plugin-sms [floatinghotpot](https://github.com/floatinghotpot/cordova-plugin-sms)
+        -> Send SMS.
+        -> Read and show user list SMS from inbox.
+        -> Show SMS details.
+        -> Watch for SMS arrive.
 
-### With the Ionic CLI:
+## Running
 
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+Before you go through this example, you should have at least a basic understanding of Ionic concepts. You must also already have Ionic installed on your machine.
+
+* Test in localhost:
+
+To run it, cd into `ionic-receiver-sms` and run:
 
 ```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myBlank blank
+npm install
+ionic serve
 ```
 
-Then, to run it, cd into `myBlank` and run:
+* Test in Android: 
 
 ```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
+ionic cordova add platform android
+ionic cordova run android
 ```
 
-Substitute ios for android if not on a Mac.
+* Test in iOS: 
+
+```bash
+ionic cordova add platform ios
+ionic cordova run ios
+```
+
+## Requirements
+
+* [Node.js](http://nodejs.org/)
+* [Ionic Cordova](https://ionicframework.com/docs/intro/installation/)
+
+## License
+   
+The MIT License (MIT) Copyright (c)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+   
+Original work Copyright (c) 2017 Adrián Brito
+
 
