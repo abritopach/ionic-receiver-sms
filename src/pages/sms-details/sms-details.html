@@ -15,9 +15,7 @@
 
 <ion-content padding>
   <div *ngFor="let message of messages">
-      <ion-item-divider>
-          {{message.date}}
-      </ion-item-divider>
+      <h4>{{message.date}}</h4>
       <ion-card *ngFor="let item of message.info">
           <ion-item>
             <ion-avatar item-start>

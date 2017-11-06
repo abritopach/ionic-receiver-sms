@@ -1,3 +1,15 @@
 page-sms-details {
-
+    h4 {
+        display: flex;
+        color: #ccc;
+      }
+      h4::before,
+      h4::after {
+        content: "";
+        flex:1;
+        align-self: center;
+        border-bottom: 1px solid #ccc;
+      }
+      h4::before {margin-right: .3em}
+      h4::after {margin-left: .3em}
 }
