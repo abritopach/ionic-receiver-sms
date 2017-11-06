@@ -4,12 +4,13 @@ Sample project that attempts to simulate the behavior of the mobile device's mes
 
 This sample project shows you how to:
 
-    * Send SMS using @ionic-native/sms and cordova-sms-plugin (Uncomment code in sms-service provider).
-    * Using cordova-plugin-sms [floatinghotpot](https://github.com/floatinghotpot/cordova-plugin-sms)
-        -> Send SMS.
-        -> Read and show user list SMS from inbox.
-        -> Show SMS details.
-        -> Watch for SMS arrive.
+* Send SMS using @ionic-native/sms and cordova-sms-plugin (Uncomment code in sms-service provider).
+* Using [cordova-plugin-sms](https://github.com/floatinghotpot/cordova-plugin-sms)
+    -> Send SMS.
+    -> Read and show user list SMS from inbox.
+    -> Show SMS details.
+    -> Watch for SMS arrive.
+* Using [angular2-text-mask](https://github.com/text-mask/text-mask/tree/master/angular2) plugin to apply mask to phone input.
 
 ## Running
 
