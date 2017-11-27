@@ -10,6 +10,7 @@ This sample project shows you how to:
     * Read and show user list SMS from inbox.
     * Show SMS details.
     * Watch for SMS arrive.
+    * Update SMS list when sms arrive.
 * Using [angular2-text-mask](https://github.com/text-mask/text-mask/tree/master/angular2) plugin to apply mask to phone input.
 
 ## Running

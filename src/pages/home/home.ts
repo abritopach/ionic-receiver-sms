@@ -19,6 +19,8 @@ export class HomePage {
     "message": "",
   };
 
+  countNewSMSs = 0;
+
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public smsService: SmsServiceProvider) {
   
     this.masks = {

@@ -8,7 +8,11 @@
 
 <ion-content padding>
   <ion-fab top right edge>
-    <button ion-fab mini [disabled]="!isApp" (click)="onClickSMSList()"><ion-icon name="list-box"></ion-icon></button>
+    <button ion-fab mini [disabled]="!isApp" (click)="onClickSMSList()">
+      <ion-icon name="list-box">
+          <ion-badge class="sms-badge" color="danger" *ngIf="countNewSMSs != 0">{{countNewSMSs}}</ion-badge>
+      </ion-icon>
+    </button>
   </ion-fab>
   <ion-card>
     <ion-item>
