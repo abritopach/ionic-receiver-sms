@@ -55,16 +55,20 @@ export class SmsServiceProvider {
     
   waitingForSMS() {
     console.log("waitingForSMS");
-    if (SMS)SMS.startWatch(() => { 
-      console.log('Waiting for SMS...'); 
-    },Error => { 
-      console.log('Error waiting for SMS.'); 
-    });      
-    document.addEventListener('onSMSArrive', (e: any ) => { 
-      var sms = e.data; 
-      console.log({mensaje_entrante:sms});    
-      this.events.publish('onSMSArrive', sms);   
-    }); 
+    return new Promise((resolve, reject) => {
+      if (SMS)SMS.startWatch(() => { 
+        console.log('Waiting for SMS...'); 
+      },Error => { 
+        console.log('Error waiting for SMS.'); 
+      });      
+      document.addEventListener('onSMSArrive', (e: any ) => { 
+        var sms = e.data; 
+        console.log({mensaje_entrante:sms});    
+        this.events.publish('onSMSArrive', sms);   
+        resolve(sms);
+      }); 
+    });
+    
   }
   
   /*
