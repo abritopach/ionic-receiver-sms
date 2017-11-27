@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, Events } from 'ionic-angular';
 
 import { SmsServiceProvider } from '../../providers/sms-service/sms-service';
 
@@ -23,13 +23,25 @@ export class SmsListPage {
   results: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public smsService: SmsServiceProvider,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController, public events: Events) {
       this.results = [];
       this.messages = [];
+
+      events.subscribe('onSMSArrive', (sms) => {
+        // Sms is the same argument passed in `events.publish(sms)`.
+        console.log('onSMSArrive', sms);
+        
+        this.readListSMS();
+      });
   }
 
   ionViewDidLoad() {
     //console.log('ionViewDidLoad SmsListPage');
+
+    this.readListSMS();
+  }
+
+  readListSMS() {
 
     let loading = this.loadingCtrl.create({
       content: "Loading SMS..."
@@ -69,7 +81,7 @@ export class SmsListPage {
       }  
     });
     
-    //console.log(res);
+    console.log(res);
     this.messages = res;
   }
 

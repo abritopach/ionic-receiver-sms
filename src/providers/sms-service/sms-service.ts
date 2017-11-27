@@ -1,4 +1,4 @@
-import { ToastController } from 'ionic-angular';
+import { ToastController, Events } from 'ionic-angular';
 import { Injectable } from '@angular/core';
 //import { SMS } from '@ionic-native/sms';
 
@@ -13,7 +13,7 @@ declare var SMS: any;
 @Injectable()
 export class SmsServiceProvider {
 
-  constructor(public toastCtrl: ToastController/*, public sms: SMS*/) {
+  constructor(public toastCtrl: ToastController/*, public sms: SMS*/, public events: Events) {
     console.log('Hello SmsServiceProvider Provider');
   }
 
@@ -62,7 +62,8 @@ export class SmsServiceProvider {
     });      
     document.addEventListener('onSMSArrive', (e: any ) => { 
       var sms = e.data; 
-      console.log({mensaje_entrante:sms});       
+      console.log({mensaje_entrante:sms});    
+      this.events.publish('onSMSArrive', sms);   
     }); 
   }
   

@@ -29,7 +29,7 @@ export class HomePage {
     };
 	  this.isApp = (!document.URL.startsWith('http') || document.URL.startsWith('http://localhost:8080'));
 	  if (this.isApp) {
-		  this.smsService.waitingForSMS();
+      this.smsService.waitingForSMS();
 	  }
 	  else {
 		  console.log("Web Browser.");
